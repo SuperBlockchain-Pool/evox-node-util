@@ -8,9 +8,9 @@
 
 
 #ifndef TESTNET
-#define CURRENCY_FORMATION_VERSION                      84
+#define CURRENCY_FORMATION_VERSION                      85
 #else
-#define CURRENCY_FORMATION_VERSION                      88
+#define CURRENCY_FORMATION_VERSION                      89
 #endif
 
 #define CURRENCY_GENESIS_NONCE                          (CURRENCY_FORMATION_VERSION + 101011010121) //bender's nightmare
@@ -20,11 +20,11 @@
 #define CURRENCY_MAX_BLOCK_NUMBER                       500000000
 #define CURRENCY_MAX_BLOCK_SIZE                         500000000  // block header blob limit, never used!
 #define CURRENCY_TX_MAX_ALLOWED_OUTS                    2000
-#define CURRENCY_PUBLIC_ADDRESS_BASE58_PREFIX           0xc5   // addresses start with 'Zx'
-#define CURRENCY_PUBLIC_INTEG_ADDRESS_BASE58_PREFIX     0x3678 // integrated addresses start with 'iZ'
-#define CURRENCY_PUBLIC_INTEG_ADDRESS_V2_BASE58_PREFIX  0x36f8 // integrated addresses start with 'iZ' (new format)
-#define CURRENCY_PUBLIC_AUDITABLE_ADDRESS_BASE58_PREFIX 0x98c8 // auditable addresses start with 'aZx'
-#define CURRENCY_PUBLIC_AUDITABLE_INTEG_ADDRESS_BASE58_PREFIX 0x8a49 // auditable integrated addresses start with 'aiZX'
+#define CURRENCY_PUBLIC_ADDRESS_BASE58_PREFIX           0x2760         // addresses start with `eX`                        //was 0xc5   'Zx'
+#define CURRENCY_PUBLIC_INTEG_ADDRESS_BASE58_PREFIX     0x3bf6         // integrated addresses start with `iE`             //was 0x3678 'iZ'
+#define CURRENCY_PUBLIC_INTEG_ADDRESS_V2_BASE58_PREFIX  0x3bf6         // integrated addresses start with `iE              //was 0x36f8 'iZ' (new format)
+#define CURRENCY_PUBLIC_AUDITABLE_ADDRESS_BASE58_PREFIX 0x5846         // auditable addresses start with `aEX`             //was 0x98c8 'aZx'
+#define CURRENCY_PUBLIC_AUDITABLE_INTEG_ADDRESS_BASE58_PREFIX 0x1785c9 // auditable integrated addresses start with `aiEX` //was 0x8a49 'aiZX'
 #define CURRENCY_MINED_MONEY_UNLOCK_WINDOW              10
 #define CURRENT_TRANSACTION_VERSION                     1
 #define HF1_BLOCK_MAJOR_VERSION                         1
@@ -46,14 +46,14 @@
 #define CURRENCY_DISPLAY_DECIMAL_POINT                  12
 
 // COIN - number of smallest units in one coin
-#define COIN                                            ((uint64_t)1000000000000) // pow(10, CURRENCY_DISPLAY_DECIMAL_POINT)
+#define COIN                                            ((uint64_t)1000000000000) // pow 12 (10, CURRENCY_DISPLAY_DECIMAL_POINT)
 #define BASE_REWARD_DUST_THRESHOLD                      ((uint64_t)1000000) // pow(10, 6) - change this will cause hard-fork!
 #define DEFAULT_DUST_THRESHOLD                          ((uint64_t)0)
 
 #define TX_DEFAULT_FEE                                  ((uint64_t)10000000000) // .01
 #define TX_MINIMUM_FEE                                  ((uint64_t)10000000000) // .01
 
-#define CURRENCY_BLOCK_REWARD                           1000000000000 // 1.0 coin == pow(10, CURRENCY_DISPLAY_DECIMAL_POINT)
+#define CURRENCY_BLOCK_REWARD                           1000000000000 // 1.0 coin == pow 12 (10, CURRENCY_DISPLAY_DECIMAL_POINT)
 
 
 #define WALLET_MAX_ALLOWED_OUTPUT_AMOUNT                ((uint64_t)0xffffffffffffffffLL)
@@ -99,16 +99,16 @@
 
 
 #ifndef TESTNET
-#define P2P_DEFAULT_PORT                                11121
-#define RPC_DEFAULT_PORT                                11211
-#define STRATUM_DEFAULT_PORT                            11777
+#define P2P_DEFAULT_PORT                                52520
+#define RPC_DEFAULT_PORT                                52521
+#define STRATUM_DEFAULT_PORT                            52500
 #define P2P_NETWORK_ID_TESTNET_FLAG                     0
 #define P2P_MAINTAINERS_PUB_KEY                         "8f138bb73f6d663a3746a542770781a09579a7b84cb4125249e95530824ee607"
 #else 
 #define P2P_DEFAULT_PORT                                (11112 + CURRENCY_FORMATION_VERSION)
-#define RPC_DEFAULT_PORT                                12111
-#define STRATUM_DEFAULT_PORT                            11888
-#define STRARUM_DEFAULT_PORT                            51113
+#define RPC_DEFAULT_PORT                                52531   //was 12111
+#define STRATUM_DEFAULT_PORT                            52600   //was 11888
+#define STRARUM_DEFAULT_PORT                            52700   //was 51113
 #define P2P_NETWORK_ID_TESTNET_FLAG                     1
 #define P2P_MAINTAINERS_PUB_KEY                         "aaa2d7aabc8d383fd53a3ae898697b28f236ceade6bafc1eecff413a6a02272a"
 #endif
@@ -168,9 +168,9 @@
 
 
 
-#define CURRENCY_NAME_ABR                               "ZANO"
-#define CURRENCY_NAME_BASE                              "Zano"
-#define CURRENCY_NAME_SHORT_BASE                        "Zano"
+#define CURRENCY_NAME_ABR                               "EVOX"
+#define CURRENCY_NAME_BASE                              "Evox"
+#define CURRENCY_NAME_SHORT_BASE                        "Evox"
 #ifndef TESTNET
 #define CURRENCY_NAME                                   CURRENCY_NAME_BASE
 #define CURRENCY_NAME_SHORT                             CURRENCY_NAME_SHORT_BASE
@@ -180,7 +180,7 @@
 #endif
 
 //premine
-#define PREMINE_AMOUNT                                  (17517203000000000000U) // 13827203.0 reserved for coinswap, 3690000.0 - premine  
+#define PREMINE_AMOUNT                                  (14000000000000000000U)  
 
 //alias registration wallet
 #define ALIAS_REWARDS_ACCOUNT_SPEND_PUB_KEY             "0000000000000000000000000000000000000000000000000000000000000000" //burn alias money
@@ -212,6 +212,7 @@
 #define GUI_SECURE_CONFIG_FILENAME                      "gui_secure_conf.bin"
 #define GUI_CONFIG_FILENAME                             "gui_settings.json"
 #define GUI_INTERNAL_CONFIG2                            "gui_internal_config.json"
+#define GUI_IPC_MESSAGE_CHANNEL_NAME                    CURRENCY_NAME_BASE "_message_que"
 
 
 
@@ -238,13 +239,13 @@
 #define BLOCK_MINOR_VERSION_GENESIS                     0
 #define BLOCK_MAJOR_VERSION_INITIAL                     0
 #ifndef TESTNET
-#define ZANO_HARDFORK_01_AFTER_HEIGHT                   194624
-#define ZANO_HARDFORK_02_AFTER_HEIGHT                   999999
-#define ZANO_HARDFORK_03_AFTER_HEIGHT                   1082577
+#define EVOX_HARDFORK_01_AFTER_HEIGHT                   50    //was 194624
+#define EVOX_HARDFORK_02_AFTER_HEIGHT                   100    //was 999999
+#define EVOX_HARDFORK_03_AFTER_HEIGHT                   150    //was 1082577
 #else
-#define ZANO_HARDFORK_01_AFTER_HEIGHT                   1440
-#define ZANO_HARDFORK_02_AFTER_HEIGHT                   1800
-#define ZANO_HARDFORK_03_AFTER_HEIGHT                   1801
+#define EVOX_HARDFORK_01_AFTER_HEIGHT                   50
+#define EVOX_HARDFORK_02_AFTER_HEIGHT                   100
+#define EVOX_HARDFORK_03_AFTER_HEIGHT                   150
 #endif
 
 
