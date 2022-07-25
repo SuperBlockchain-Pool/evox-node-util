@@ -22,7 +22,7 @@
 namespace nodetool
 {
   //zero network before launch
-  const static boost::uuids::uuid P2P_NETWORK_ID = { { 0x11, 0x10, 0x01, 0x11, 0x01, 0x01, 0x11, 0x01, 0x10, 0x11, P2P_NETWORK_ID_TESTNET_FLAG, 0x11, 0x01, 0x11, 0x21, P2P_NETWORK_ID_VER} };
+  const static boost::uuids::uuid P2P_NETWORK_ID = { { 0x10, 0xFF, 0x10, 0x88, 0x11, 0x66, 0xFF, 0x11, 0x1F, 0x01, P2P_NETWORK_ID_TESTNET_FLAG, 0x10, 0xFF, 0x10, 0x08, P2P_NETWORK_ID_VER} };
 
   namespace
   {
@@ -315,15 +315,21 @@ namespace nodetool
     ADD_HARDCODED_SEED_NODE("62.171.142.111", P2P_DEFAULT_PORT);    // node1 - Germany
     ADD_HARDCODED_SEED_NODE("164.68.127.234", P2P_DEFAULT_PORT);    // node2 - Germany
     ADD_HARDCODED_SEED_NODE("79.143.181.203", P2P_DEFAULT_PORT);    // node3 - Germany
-    ADD_HARDCODED_SEED_NODE("130.162.220.200", P2P_DEFAULT_PORT);   // node7 - Frankfurt - oracle1
-    ADD_HARDCODED_SEED_NODE("141.144.237.74", P2P_DEFAULT_PORT);    // node8 - Frankfurt - oracle2
+    ADD_HARDCODED_SEED_NODE("130.162.220.200", P2P_DEFAULT_PORT);   // oracle1 - Frankfurt
+    ADD_HARDCODED_SEED_NODE("141.144.237.74", P2P_DEFAULT_PORT);    // oracle2 - Frankfurt
+    ADD_HARDCODED_SEED_NODE("49.234.122.53", P2P_DEFAULT_PORT);     // Jason - China
+    ADD_HARDCODED_SEED_NODE("198.50.187.239", P2P_DEFAULT_PORT);     // Eadrom - .......
+    ADD_HARDCODED_SEED_NODE("45.132.244.63", P2P_DEFAULT_PORT);     // SG-Doge - ......
 #else
     //TODO:
     ADD_HARDCODED_SEED_NODE("62.171.142.111", P2P_DEFAULT_PORT);    // node1 - Germany
     ADD_HARDCODED_SEED_NODE("164.68.127.234", P2P_DEFAULT_PORT);    // node2 - Germany
     ADD_HARDCODED_SEED_NODE("79.143.181.203", P2P_DEFAULT_PORT);    // node3 - Germany
-    ADD_HARDCODED_SEED_NODE("130.162.220.200", P2P_DEFAULT_PORT);   // node7 - Frankfurt - oracle1
-    ADD_HARDCODED_SEED_NODE("141.144.237.74", P2P_DEFAULT_PORT);    // node8 - Frankfurt - oracle2
+    ADD_HARDCODED_SEED_NODE("130.162.220.200", P2P_DEFAULT_PORT);   // oracle1 - Frankfurt
+    ADD_HARDCODED_SEED_NODE("141.144.237.74", P2P_DEFAULT_PORT);    // oracle2 - Frankfurt
+    ADD_HARDCODED_SEED_NODE("49.234.122.53", P2P_DEFAULT_PORT);     // Jason - China
+    ADD_HARDCODED_SEED_NODE("198.50.187.239", P2P_DEFAULT_PORT);     // Eadrom - .......
+    ADD_HARDCODED_SEED_NODE("45.132.244.63", P2P_DEFAULT_PORT);     // SG-Doge - ......
 #endif
 
     bool res = handle_command_line(vm);
