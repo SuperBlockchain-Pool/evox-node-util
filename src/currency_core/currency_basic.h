@@ -8,7 +8,7 @@
 #pragma once
 
 #include <type_traits>
-// #include <boost/variant.hpp> //fix for pool
+#include <boost/variant.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/mpl/back_inserter.hpp>
 #include <boost/mpl/copy.hpp>
